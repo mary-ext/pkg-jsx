@@ -78,7 +78,7 @@ const renderStyleMap = (map: Record<string, any> | null): string => {
 /**
  * Creates a new element
  */
-const createElement = ((type: string | Component, props: any, _key?: any): TrustedHTML => {
+export const jsx = ((type: string | Component, props: any, _key?: any): TrustedHTML => {
 	if (typeof type === 'function') {
 		let rendered: JSXNode;
 
@@ -157,7 +157,7 @@ const createElement = ((type: string | Component, props: any, _key?: any): Trust
 	return new TrustedHTML(res);
 }) as JSXFunction;
 
-export { createElement as jsx, createElement as jsxDEV, createElement as jsxs, createElement as jsxsDEV };
+export { jsx as jsxDEV, jsx as jsxs, jsx as jsxsDEV };
 
 // Deno's precompiled JSX
 /**
@@ -167,7 +167,10 @@ export { createElement as jsx, createElement as jsxDEV, createElement as jsxs, c
  * @param values Dynamic values
  * @returns Trusted HTML instance
  */
-export const jsxTemplate = (strings: string[], ...values: (string | TrustedHTML)[]): TrustedHTML => {
+export const jsxTemplate = (
+	strings: string[],
+	...values: (ReturnType<typeof jsx | typeof jsxAttr | typeof jsxEscape>)[]
+): TrustedHTML => {
 	let str = strings[0];
 	for (let i = 1, il = strings.length; i < il; i++) {
 		let value = values[i - 1];
