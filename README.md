@@ -44,7 +44,7 @@ JSX templates are eagerly interpreted.
 This library supports Deno's precompiled JSX transformation for even faster serialization, you can make use of
 it by adding the following configuration to your `deno.json` file:
 
-```jsonc
+```json
 {
 	"compilerOptions": {
 		"jsx": "precompile",
