@@ -1,8 +1,5 @@
 # jsx
 
-[View on JSR](https://jsr.io/@mary/jsx)\
-[Source code](https://codeberg.org/mary-ext/pkg-jsx)
-
 Serialize JSX to string, fully type-safe.
 
 ## Usage
